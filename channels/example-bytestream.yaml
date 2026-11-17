@@ -1,0 +1,15 @@
+name: example-bytestream
+description: 占位字节流通道示例（ASTM E1394 风格 + 串口；按需复制改名）
+type: bytestream
+encoding: utf-8
+serialPort: /dev/ttyUSB0
+baudRate: 9600
+startCharHex: '0x05'   # ASTM ENQ
+endCharHex: '0x04'     # ASTM EOT
+bodyEncoding: utf-8
+stripControlChars: false
+keepControlChars:
+  - 0x0D
+  - 0x0A
+stripSequences:
+  - '06'             # ASTM ACK

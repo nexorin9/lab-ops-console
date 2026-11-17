@@ -1,0 +1,67 @@
+# 检验项目字典（脱敏示例级规模，不堆砌词库）
+# 来源 / 版本 / 生效日期写在文件头：护士长改完 yaml 重启即生效，命中率直接进运行摘要。
+# 未命中的 instrument_code 会输出 low_confidence 候选，交模型归因后由人工确认回写为本文件条目。
+source: 院内检验项目对照表（脱敏样例，非真实患者数据）
+version: '2026.11.1'
+effectiveDate: '2026-11-01'
+items:
+  - instrument_code: K
+    instrument_name: 血钾
+    loinc: 2823-3
+    unit: mmol/L
+    local_code: LIS-K
+  - instrument_code: NA
+    instrument_name: 血钠
+    loinc: 2951-2
+    unit: mmol/L
+    local_code: LIS-NA
+  - instrument_code: CL
+    instrument_name: 血氯
+    loinc: 2075-0
+    unit: mmol/L
+    local_code: LIS-CL
+  - instrument_code: GLU
+    instrument_name: 葡萄糖
+    loinc: 2345-7
+    unit: mmol/L
+    local_code: LIS-GLU
+  - instrument_code: CR
+    instrument_name: 肌酐
+    loinc: 2160-0
+    unit: umol/L
+    local_code: LIS-CR
+  - instrument_code: BUN
+    instrument_name: 尿素氮
+    loinc: 3094-0
+    unit: mmol/L
+    local_code: LIS-BUN
+  - instrument_code: ALT
+    instrument_name: 丙氨酸氨基转移酶
+    loinc: 1742-6
+    unit: U/L
+    local_code: LIS-ALT
+  - instrument_code: AST
+    instrument_name: 天门冬氨酸氨基转移酶
+    loinc: 1920-8
+    unit: U/L
+    local_code: LIS-AST
+  - instrument_code: WBC
+    instrument_name: 白细胞计数
+    loinc: 6690-2
+    unit: 10^9/L
+    local_code: LIS-WBC
+  - instrument_code: HGB
+    instrument_name: 血红蛋白
+    loinc: 718-7
+    unit: g/L
+    local_code: LIS-HGB
+  - instrument_code: PLT
+    instrument_name: 血小板计数
+    loinc: 777-3
+    unit: 10^9/L
+    local_code: LIS-PLT
+  - instrument_code: PT
+    instrument_name: 凝血酶原时间
+    loinc: 5902-2
+    unit: s
+    local_code: LIS-PT

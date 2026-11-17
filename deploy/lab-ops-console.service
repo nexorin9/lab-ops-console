@@ -1,0 +1,41 @@
+# 检验仪器接入与危急值闭环系统 · systemd 单元
+#
+# 安装：
+#   sudo cp deploy/lab-ops-console.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now lab-ops-console
+#
+# 说明：
+# - 应用自身通过 dotenv 读取项目根目录 .env（WorkingDirectory 指向安装目录），
+#   因此无需在此重复列环境变量；如需由 systemd 注入，可改用 EnvironmentFile=（见下）。
+# - 日志由应用自身按结构化 JSON 写 stdout/stderr，journald 接管；如需落文件，
+#   改用 StandardOutput=append:/var/log/lab-ops-console/out.log 等同款配置。
+# - 进程优雅退出：SIGTERM 后应用会先跑完在途帧再关闭（见 src/index.ts 的 SIGINT/SIGTERM 处理）。
+
+[Unit]
+Description=检验仪器接入与危急值闭环系统 (lab-ops-console)
+Documentation=file:///opt/lab-ops-console/docs/deploy.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=labops
+Group=labops
+WorkingDirectory=/opt/lab-ops-console
+ExecStart=/usr/bin/node /opt/lab-ops-console/dist/index.js
+ExecStartPre=/usr/bin/node /opt/lab-ops-console/dist/gateway/cli.js doctor
+Restart=on-failure
+RestartSec=3
+# 退出前给应用 10s 跑完在途帧（SIGTERM 后延迟强杀）
+TimeoutStopSec=15
+# 资源与安全基线：工控机单实例，限制内存与文件描述符
+LimitNOFILE=65536
+MemoryMax=2G
+# 不随会话退出而停（常驻）
+KillMode=control-group
+# 若改用 systemd 注入凭据而非 .env，去掉下面注释并删除应用内 dotenv 依赖：
+# EnvironmentFile=-/opt/lab-ops-console/.env
+
+[Install]
+WantedBy=multi-user.target

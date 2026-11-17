@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>护士站 · 危急值大屏</title>
+  <link rel="stylesheet" href="/tokens.css">
+  <style>
+    body { background: #101820; color: var(--c-surface); margin: 0; }
+    header { padding: var(--sp-4) var(--sp-6); border-bottom: 1px solid #263442; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: var(--fs-xl); margin: 0; }
+    #ws-banner { display: none; background: var(--c-warn); color: #fff; padding: var(--sp-2) var(--sp-6); font-size: var(--fs-md); }
+    #ws-banner.show { display: block; }
+    .grid { padding: var(--sp-5); display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: var(--sp-4); }
+    .critical-card { border: 3px solid var(--c-critical); border-radius: var(--radius-lg); padding: var(--sp-4); background: #1b2530; }
+    .critical-card .tag-critical { font-size: var(--fs-lg); }
+    .critical-card .value { font-size: var(--fs-xxl); font-weight: 700; margin: var(--sp-3) 0; }
+    .critical-card .unit { font-size: var(--fs-lg); color: var(--c-text-muted); }
+    .critical-card .meta { font-size: var(--fs-md); color: #8fa3b5; margin-bottom: var(--sp-3); }
+    .critical-card .actions button { font-size: var(--fs-md); padding: var(--sp-2) var(--sp-4); margin-right: var(--sp-3); }
+    .btn-ack { background: #f5a623; color: #1b2530; }
+    .btn-resolve { background: var(--c-ok); color: #fff; }
+    .done-card { border: 1px solid var(--c-border); border-radius: var(--radius-md); padding: var(--sp-3); background: #16202b; opacity: 0.8; }
+    .section-title { padding: 0 var(--sp-5); font-size: var(--fs-lg); margin-top: var(--sp-5); }
+  </style>
+</head>
+<body>
+  <header><h1>护士站 · 危急值大屏</h1><span id="ws-state">连接中</span></header>
+  <div id="ws-banner">已断开，正在重连…</div>
+  <div class="grid" id="critical-cards" data-region="wallboard"></div>
+  <h2 class="section-title">已办</h2>
+  <div class="grid" id="done-list" data-region="wallboard-done"></div>
+
+  <script type="module" src="/render.js"></script>
+  <script type="module" src="/wallboard.js"></script>
+</body>
+</html>

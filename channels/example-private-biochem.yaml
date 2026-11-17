@@ -1,0 +1,26 @@
+name: example-private-biochem
+description: 占位私有协议示例（生化仪字节模板；按需复制改名）
+type: private
+serialPort: /dev/ttyUSB1
+baudRate: 9600
+encoding: utf-8
+deviceId: DEV-001
+startTriggerHex: '0x02'
+endTriggerHex: '0x03'
+fields:
+  - name: patientId
+    offset: 0
+    length: 8
+    encoding: utf-8
+  - name: potassium
+    offset: 8
+    length: 5
+    encoding: utf-8
+  - name: sodium
+    offset: 13
+    length: 5
+    encoding: utf-8
+  - name: chloride
+    offset: 18
+    length: 5
+    encoding: utf-8

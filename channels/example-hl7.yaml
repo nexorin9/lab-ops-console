@@ -1,0 +1,5 @@
+name: example-hl7
+description: 占位 HL7 v2 ORU^R01 通道示例（不绑真实仪器厂商；按需复制改名）
+type: hl7
+deviceListenPort: 2575
+encoding: utf-8

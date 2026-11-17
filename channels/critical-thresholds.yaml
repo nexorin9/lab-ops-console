@@ -1,0 +1,87 @@
+# 危急值阈值表（脱敏样例；护士长改完重启即生效）
+# 单位换算后比阈值；仪器危急标记与阈值判定冲突时取更严重的一侧并计 conflict。
+# 阈值表缺失或加载失败 → 安全降级为「只认仪器标记 + 告警」，绝不静默放行。
+source: 院内危急值管理制度（脱敏样例，检验科 / 医务科联合审定）
+version: '2026.11.1'
+effectiveDate: '2026-11-01'
+items:
+  - code: K
+    display: 血钾
+    unit: mmol/L
+    low: 3.5
+    high: 5.5
+    criticalLow: 2.8
+    criticalHigh: 6.2
+    source: 院内制度附录 A
+  - code: NA
+    display: 血钠
+    unit: mmol/L
+    low: 135
+    high: 145
+    criticalLow: 120
+    criticalHigh: 160
+    source: 院内制度附录 A
+  - code: CL
+    display: 血氯
+    unit: mmol/L
+    low: 98
+    high: 107
+    criticalLow: 80
+    criticalHigh: 120
+    source: 院内制度附录 A
+  - code: GLU
+    display: 葡萄糖
+    unit: mmol/L
+    low: 3.9
+    high: 6.1
+    criticalLow: 2.8
+    criticalHigh: 22.2
+    source: 院内制度附录 A
+  - code: CA
+    display: 血钙
+    unit: mmol/L
+    low: 2.1
+    high: 2.6
+    criticalLow: 1.75
+    criticalHigh: 3.5
+    source: 院内制度附录 B
+  - code: HGB
+    display: 血红蛋白
+    unit: g/L
+    low: 120
+    high: 160
+    criticalLow: 60
+    criticalHigh: 200
+    source: 院内制度附录 B
+  - code: WBC
+    display: 白细胞计数
+    unit: 10^9/L
+    low: 4.0
+    high: 10.0
+    criticalLow: 1.0
+    criticalHigh: 30.0
+    source: 院内制度附录 B
+  - code: PLT
+    display: 血小板计数
+    unit: 10^9/L
+    low: 100
+    high: 300
+    criticalLow: 20
+    criticalHigh: 1000
+    source: 院内制度附录 B
+  - code: CR
+    display: 肌酐
+    unit: umol/L
+    low: 44
+    high: 106
+    criticalLow: 20
+    criticalHigh: 530
+    source: 院内制度附录 C
+  - code: BUN
+    display: 尿素氮
+    unit: mmol/L
+    low: 2.9
+    high: 8.2
+    criticalLow: 1.5
+    criticalHigh: 35.7
+    source: 院内制度附录 C

@@ -1,0 +1,57 @@
+{
+  "name": "lab-ops-console",
+  "version": "0.1.0",
+  "description": "检验仪器接入与危急值闭环系统 — HL7/ASTM/串口/私有协议多通道采集 + FHIR R4 写入 + 危急值状态机 + 实时浏览器面板",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "dist/index.js",
+  "bin": {
+    "lab-ops-console": "dist/gateway/cli.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json && node scripts/copy-static.mjs",
+    "start": "node dist/index.js",
+    "cli": "node dist/gateway/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "gen:data": "tsx scripts/generate-synthetic-stream.ts",
+    "fetch:data": "tsx scripts/fetch-public-data.ts",
+    "check:determinism": "tsx scripts/check-determinism.ts",
+    "compare:baseline": "tsx scripts/compare-baseline.ts",
+    "check:styles": "tsx scripts/check-style-tokens.ts",
+    "lint": "echo 'lint placeholder'",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "iconv-lite": "^0.6.3",
+    "pdfkit": "^0.15.0",
+    "pino": "^9.2.0",
+    "reconnecting-websocket": "^4.4.0",
+    "serialport": "^12.0.0",
+    "ws": "^8.17.0",
+    "yaml": "^2.5.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.10",
+    "@types/pdfkit": "^0.13.4",
+    "@types/serialport": "^8.0.5",
+    "@types/supertest": "^6.0.2",
+    "@types/ws": "^8.5.10",
+    "@vitest/coverage-v8": "^2.0.5",
+    "supertest": "^7.0.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}

@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+venv/
+.venv/
+
+# Build artifacts
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Test artifacts
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Runtime data (SQLite state, exported ledgers, model-call audit trail)
+data/
+exports/
+audit/
+logs/
+tmp/
+temp/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Python (in case)
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Round metadata (must NOT enter project)
+score.json
+
+# keep qrcode.jpg (NOT ignored) — used in README
+!qrcode.jpg

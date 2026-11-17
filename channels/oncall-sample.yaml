@@ -1,0 +1,46 @@
+# 值班表（脱敏样例）：按病区 + 班次时间窗 + 角色查出候选接收人
+# 跨零点班次 start > end 表示 [start, 24:00) ∪ [00:00, end)，避免夜班交班算错。
+# 值班表缺项时不返回空候选，回退到 defaultRole / defaultPractitionerId 并标 low_confidence。
+source: 院内护理排班表（脱敏样例，护理部审定）
+version: '2026.11.1'
+effectiveDate: '2026-11-01'
+defaultRole: 病区默认值班护士
+defaultPractitionerId: PR-DEFAULT-NURSE
+wards:
+  - ward: ICU
+    shifts:
+      - start: '22:00'
+        end: '06:00'
+        entries:
+          - role: ICU 夜班护士
+            practitionerId: PR-ICU-N1
+          - role: ICU 夜班二线
+            practitionerId: PR-ICU-N2
+      - start: '06:00'
+        end: '22:00'
+        entries:
+          - role: ICU 白班护士
+            practitionerId: PR-ICU-D1
+          - role: ICU 组长
+            practitionerId: PR-ICU-D2
+  - ward: 急诊
+    shifts:
+      - start: '20:00'
+        end: '08:00'
+        entries:
+          - role: 急诊夜班护士
+            practitionerId: PR-ER-N1
+          - role: 急诊值班医师
+            practitionerId: PR-ER-N2
+      - start: '08:00'
+        end: '20:00'
+        entries:
+          - role: 急诊白班护士
+            practitionerId: PR-ER-D1
+  - ward: 检验科
+    shifts:
+      - start: '00:00'
+        end: '23:59'
+        entries:
+          - role: 检验科值班技师
+            practitionerId: PR-LAB-1
